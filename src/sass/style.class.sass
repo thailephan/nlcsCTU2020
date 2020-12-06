@@ -1,0 +1,202 @@
+@import './variable'
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6
+    text-align: center
+
+.h1
+    font-size: 2em
+    font-weight: bold
+.h2
+    font-size: 1.5em
+    font-weight: bold
+.h3
+    font-size: 1.17em
+    font-weight: bold
+.h5
+    font-size: .83em
+.h4
+    font-size: 1em
+.h6
+    font-size: .67em
+
+.text_
+    &center
+        text-align: center !important
+    &left
+        text-align: left !important
+    &black
+        color: black !important
+.flex
+    flex-wrap: wrap
+    display: flex
+    &_center
+        @extend .flex
+        align-items: center
+        justify-content: center
+    &_left
+        @extend .flex
+        align-items: center
+        justify-content: flex-start
+    &_right
+        @extend .flex
+        align-items: center
+        justify-content: flex-end
+    &_center_start
+        @extend .flex
+        align-items: flex-start
+        justify-content: center
+    &_start_center
+        @extend .flex
+        align-items: center
+        justify-content: flex-start
+    &_space_start
+        @extend .flex
+        align-items: flex-start
+        justify-content: space-around
+    &_space_center
+        @extend .flex
+        align-items: center
+        justify-content: space-around
+    &_column
+        flex-direction: column
+    &_row
+        flex-direction: row
+.pbackground,
+.pbackground *
+    background-color: $primary-color !important
+.sbackground,
+.sbackground *
+    background-color: $second-color !important
+.tbackground,
+.tbackground *
+    background-color: $third-color !important
+.fbackground,
+.fbackground *
+    background-color: $fourth-color !important
+
+@for $var from 0 through 5
+    .p#{$var}
+        padding : $var * .25rem !important
+
+.icon 
+    width: 1.75em
+    height: 1.75em
+
+.top_bgshadow
+    box-shadow: 0px -.25px .5px $primary-color
+.bot_bgshadow
+    box-shadow: 0px .25px .5px $primary-color
+.rig_bgshadow
+    box-shadow: .25px 0px .5px $primary-color
+.lef_bgshadow
+    box-shadow: -.25px 0px .5px $primary-color
+
+.backtop__button
+    @extend .flex_center
+    width: 48px
+    height: 48px
+    border: 2px solid $primary-color
+
+
+
+.logo
+    width: 10vw
+
+.menu_icon
+    width: 18px 
+    margin-right: 10px
+
+.m_r_2
+    margin-right: .5em
+@for $i from 1 through 5
+    .m#{$i}
+        margin: .25em * $i
+    .mr#{$i}
+        margin-right: .25em * $i
+    .ml#{$i}
+        margin-left: .25em * $i
+    .mt#{$i}
+        margin-top: .25em * $i
+
+.product_card
+    width: 30%
+    margin-top: 10px
+    margin-right: 1%
+    margin-left: 1%
+    position: relative
+    &::after
+        border-bottom: 2px solid $primary-color
+        position: absolute
+        bottom: 0
+        content: ''
+        transform: translateX(50%)        
+        width: 0
+        transition: all .3s
+    &:hover::after
+        width: 50%
+        
+
+.home_banner
+    position: relative
+    max-width: 50%
+    max-height: 60vh
+    .img_banner
+        max-width: 100% 
+        max-height: 60vh
+        min-height: 60vh
+    .hover_banner
+        text-align: center
+        font-weight: 700
+        color: white
+        font-size: 5rem
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-color: #0003
+        opacity: 0%
+        transition: opacity 1.5s, all 2s
+        p
+            transition: all 1s
+            transition-timing-function: ease-out
+
+    &:hover 
+        .hover_banner
+            opacity: 100%
+            p
+                transform: translateY(40%)
+
+.search_bar_home
+    @extend .flex_center
+    width: 80%
+    .search_text_home
+        @extend .h2
+        font-size: 30px 
+        border-bottom: 2px solid #2A9D8F
+        margin: 1em
+        padding: 0 .25em
+    .search_button
+        margin: 10px
+        width: 10vw
+        height: 8vh
+        border-radius: .5em
+        font-size: 18px
+        *
+            color: white !important
+
+.link_banner_home_button
+    @extend .fbackground
+    padding: 10px
+    margin: 30px
+    height: 10vh
+
+.plant_in_Order_Card_left
+    border-left:3vw solid #2A9D8F
+.plant_in_Order_Card_right
+    border-right: 3vw solid #2A9D8F

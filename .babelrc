@@ -1,0 +1,13 @@
+{
+    "plugins": [
+      "transform-react-pug",
+      "transform-react-jsx",
+      ["transform-jsx-classname-components", {
+        "objects": ["React"]
+      }],
+      ["transform-react-pug", {
+        "classAttribute": "styleName"
+      }],
+      "transform-jsx-css-modules"
+    ]
+  }

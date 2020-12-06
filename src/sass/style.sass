@@ -1,0 +1,40 @@
+@import  './variable'
+
+@font-face 
+    font-family: 'Quicksand'
+    src: url('../font/Quicksand-Regular.ttf')
+
+@font-face 
+    font-family: 'Quicksand'
+    src: url('../font/Quicksand-Bold.ttf')
+    font-weight: 600
+
+body,
+h1, h2, h3, h4, h5, h6,
+div, p, a , form, button,
+input
+    margin: 0
+    padding: 0
+    text-decoration: none
+    border: none
+    font-family: 'Quicksand', sans-serif
+
+button
+    text-align: center
+    @extend .white
+
+body
+    scroll-behavior: smooth
+
+form, section, header, footer
+    background-color: #fff !important
+
+    
+.white *
+    color: #fff !important
+
+a, a:visited, a:hover
+    color: #000 !important
+
+aside
+    min-height: 100vh
