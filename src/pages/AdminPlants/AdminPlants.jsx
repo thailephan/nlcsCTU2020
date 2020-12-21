@@ -460,7 +460,7 @@ class AdminPlants extends Component {
                         <Form.Item
                             label="Số cây sẳn có"
                             name='available'
-                            initialValue = {this.state.newPlant.socayton || 1}
+                            initialValue = {this.state.newPlant.socayton || 0}
                             rules = {[{
                                 required: true,
                                 message: 'Số cây không được trống'
@@ -470,7 +470,7 @@ class AdminPlants extends Component {
                             <InputNumber
                                 placeholder='0'
                                 size="large"
-                                min = {1}
+                                min = {0}
                                 onChange={(value) => { this.setState({ newPlant: { ...this.state.newPlant, socayton: value } }) }}
                             />
                         </Form.Item>

@@ -10,7 +10,6 @@ import PopoverContent from '../../components/PopoverContent/PopoverContent';
 import { UserOutlined, SearchOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
-import local from '../../utils/withTokenUser'
 import SearchBar from '../../components/SearchBar/SearchBar';
 
 import { setKeyforSidebar } from '../../redux/features/Sidebar/SidebarSlice'

@@ -69,7 +69,9 @@ class PersonalInfo extends Component {
             },
           };
         return (
-            <div className={styles.mt5 + " " + styles.flex_center}>
+            <div className={styles.mt5 + " " + styles.flex_center}
+                style = {{height: '70vh'}}
+            >
                 {user.length === 0 ? null : 
                     <div>
                         <p className={styles.h2}>Thông tin người dùng</p>
@@ -86,6 +88,15 @@ class PersonalInfo extends Component {
                             <Form.Item
                                 name="fullname"
                                 label="Họ và tên"
+                                rules={[
+                                    {
+                                      whitespace: true,
+                                      message: "Họ và tên không bắt đầu bằng khoảng trắng "
+                                    },{
+                                    pattern: '^[ a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ|_]+$',
+                                    message: 'Họ tên người dùng không chứa số và ký tự đặc biệt',
+                                },
+                            ]}
                             >
                                 <Input
                                     placeholder='Họ và tên'
@@ -96,6 +107,12 @@ class PersonalInfo extends Component {
                             <Form.Item
                                 label="Só điện thoại"
                                 name="phone"
+                                rules={[
+                                    {
+                                        pattern: '^[0-9]{10,12}$',
+                                        message: "Số điện thoại chỉ bao gồm số, không gồm chữ cái hoặc ký tự đặc biệt"
+                                    }
+                                ]}
                                 initialValue={user && user.SDT ? user.SDT : ''}
                             >
                                 <Input
@@ -117,15 +134,31 @@ class PersonalInfo extends Component {
                                     : null} 
                             >
                                 <DatePicker 
+                                    disabledDate = { 
+                                        d => (d.isAfter(moment())
+                                        || d.isSameOrBefore(moment().subtract(100, 'years')))
+                                        }
                                     format={dateFormat} 
                                     />
                             </Form.Item>
                             <Form.Item 
                                 label = "Địa chỉ"
                                 name = "address"
+                                rules= {
+                                    [{
+                                    pattern: "^[ ,.a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ|_]+$",
+                                    message: 'Địa chỉ người dùng không chứa số và ký tự đặc biệt',
+                                }, {
+                                    whitespace: true,
+                                    message: "Địa chỉ không bắt đầu bằng khoảng trắng "
+                                  }]
+                                }
                                 initialValue = {user.DIACHI ? user.DIACHI : ''}
                             >
-                                <Input type = "text" />
+                                <Input 
+                                    type = "text" 
+                                    placeholder='An Khánh, Ninh Kiều, Cần Thơ'
+                                    />
                             </Form.Item>
                             <Button htmlType="submit" className={styles.sbackground} block >Lưu</Button>
                         </Form>

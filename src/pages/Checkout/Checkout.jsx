@@ -182,7 +182,10 @@ class Checkout extends Component {
                                 }, {
                                     pattern: '^[ a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ|_]+$',
                                     message: 'Họ tên người dùng không chứa số và ký tự đặc biệt',
-                                },]}
+                                },{
+                                    whitespace: true,
+                                    message: "Họ và tên không bắt đầu bằng khoảng trắng "
+                                  }]}
                                 label="Họ và tên"
                                 name="fullname"
                                 initialValue={user.HOTENKH}
@@ -202,7 +205,10 @@ class Checkout extends Component {
                                 }, {
                                     pattern: "^[ ,.a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ|_]+$",
                                     message: 'Địa chỉ người dùng không chứa số và ký tự đặc biệt',
-                                },]}
+                                }, {
+                                    whitespace: true,
+                                    message: "Địa chỉ không bắt đầu bằng khoảng trắng "
+                                  }]}
                                 initialValue={user.DIACHI}
 
                             >

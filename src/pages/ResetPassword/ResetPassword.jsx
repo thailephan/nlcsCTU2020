@@ -55,7 +55,9 @@ class ResetPassword extends Component {
     
     render() {
         return (
-            <div className={styles.mt5 + " " + styles.flex_center}>
+            <div className={styles.mt5 + " " + styles.flex_center}
+                style = {{height: '70vh'}}
+            >
             <Form
                 style = {{width: '30vw'}}
                 onFinish={this.onFinish}

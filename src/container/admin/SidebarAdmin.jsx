@@ -7,21 +7,10 @@ import { Image, Layout, Menu } from 'antd';
 import styles from '../Shared.module.sass'
 import { NavLink, withRouter } from 'react-router-dom';
 
-import local from '../../utils/withTokenUser'
-
 const { Sider } = Layout;
 const { SubMenu } = Menu
 
 class SidebarAdmin extends Component {
-  state = {
-    selectedMenuItem: local.menuselect !== undefined
-    ? local.menuselect.item
-    : 'db',
-    
-    selectedSubMenu: local.menuselect !== undefined
-    ? local.menuselect.submenu 
-    : '',
-  }
   render() {
     // console.log(this.props)
   return (
@@ -35,7 +24,6 @@ class SidebarAdmin extends Component {
       <Menu
           onSelect = {
             (item) => {
-              console.log(this.props.location.pathname)
               setTimeout(
                 () => localStorage.setItem('pathToAdminPageForAdminReload', this.props.location.pathname) 
                 , 1000
@@ -43,10 +31,6 @@ class SidebarAdmin extends Component {
               localStorage.setItem('menuselect', JSON.stringify({submenu: item.item.props.subMenuKey, item: item.key})) 
             }
           }
-
-          defaultOpenKeys = {[this.state.selectedSubMenu]}
-          defaultSelectedKeys={[this.state.selectedMenuItem]}
-          
           
           mode="inline"
           >

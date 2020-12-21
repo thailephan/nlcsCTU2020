@@ -12,7 +12,7 @@ import { setKeyforSidebar, setPathForSidebar} from '../../redux/features/Sidebar
 export class SearchResult extends Component {
 
     componentDidMount () {
-        const { setPathForSidebar, setKeyforSidebar, location, match } = this.props
+        const { setPathForSidebar, setKeyforSidebar, location } = this.props
         setPathForSidebar( {pathname: location.pathname + location.search})
         setKeyforSidebar( { submenu: '0',  key : 'tc'})
     }
@@ -36,7 +36,12 @@ export class SearchResult extends Component {
             <div className = {styles.flex_center + ' ' + styles.m5}>
                 <p style = {{margin: '3rem'}}
                     className = {styles.h1}
-                >Kết quả tìm kiếm</p>
+                >
+                    Kết quả tìm kiếm 
+                        <br />
+                    "{qQueries}"
+                </p>
+
                 <Divider />
                 {plantCardFiltered}
             </div>

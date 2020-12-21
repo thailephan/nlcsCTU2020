@@ -157,12 +157,9 @@ export default class AdminAccounts extends Component {
       };
     
       handleOk = async e => {
-          console.log(e)
           let response
-          console.log(this.state)
 
           if(this.state.type === 0) {
-                console.log(this.state.newAccounts.id)
               response = await axios.post(`/admin/account/update/${this.state.newAccounts.id}`, {
                   token: this.props.token,
                   ...this.state.newAccounts
@@ -176,15 +173,12 @@ export default class AdminAccounts extends Component {
                   })
           }
           const data = await response.data
-          console.log(data)
 
           if(data.isSuccess === true) {
               alert("Thành công")
           } else {
               alert("Có lỗi xảy ra vui lòng thử lại sau")
           }
-          console.log(this.state.newAccounts)
-          console.log(data)
           if(this.state.type === 1) {
               let max = this.state.accounts.reduce((prevValue, curValue) => {
                   return prevValue.MATAIKHOAN < curValue.MATAIKHOAN ? curValue : prevValue
@@ -230,19 +224,16 @@ export default class AdminAccounts extends Component {
       }
   
       onEdit = async (e) => {
-          console.log(e)
           this.setState({type: 0, visible: true, 
             newAccounts: {name: e.TENTAIKHOAN, password: e.MATKHAU, state: e.TRANGTHAI ? true : false, permission: e.MAQUYEN, Namepermission: e.TENQUYEN, id: e.MATAIKHOAN, key: e.MATAIKHOAN}})
       }
       
       onDelete = async (e) => {
           
-          const response = await axios.post(`/admin/account/delete/${e.MATAIKHOAN}`, {
+          await axios.post(`/admin/account/delete/${e.MATAIKHOAN}`, {
               token: this.props.token,
           })
           
-          const result = await response.data
-          console.log(result)
           this.setState({accounts: this.state.accounts.map((value, index) => {
               if(value.MATAIKHOAN === e.MATAIKHOAN) {
                 return {...value, TRANGTHAI: 0, state: 'Vô hiệu hóa'}
@@ -265,7 +256,6 @@ export default class AdminAccounts extends Component {
             })
             const accounts = await responseUser.data
             
-            console.log(accounts)
             accounts.map((account, index) => {
                 account.key = account.MATAIKHOAN
                 account.state = !account.TRANGTHAI ? 'Vô hiệu hóa' : 'Đang hoạt động'

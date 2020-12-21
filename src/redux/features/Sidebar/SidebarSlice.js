@@ -29,7 +29,9 @@ const SidebarSlice = createSlice({
         localStorage.setItem('pathToUserPage', action.payload.pathname) 
       },
       resetSidebar: (state, action) => {
-            localStorage.removeItem('pathToUserPage')
+            localStorage.setItem('pathToUserPage', '/')
+            local.pathUserReload = '/'
+            
           return {menu: {path: '', submenu: '0', item: 'tc'}}
       }
     },

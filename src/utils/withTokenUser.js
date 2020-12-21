@@ -1,15 +1,29 @@
-const user = localStorage.getItem('user')
-const refreshToken = localStorage.getItem('refreshToken')
-const token = localStorage.getItem('token')
-const menuselect = localStorage.getItem('menuselect')
-const pathAdminReload = localStorage.getItem('pathToAdminPageForAdminReload')
-const cart = localStorage.getItem('cart')
-const pathUserReload = localStorage.getItem('pathToUserPage')
+let user = localStorage.getItem('user')
+let refreshToken = localStorage.getItem('refreshToken')
+let token = localStorage.getItem('token')
+let menuselect = localStorage.getItem('menuselect')
+let pathAdminReload = localStorage.getItem('pathToAdminPageForAdminReload')
+let cart = localStorage.getItem('cart')
+let pathUserReload = localStorage.getItem('pathToUserPage')
 
-const userObject = JSON.parse(user)
-const menuselectObject = JSON.parse(menuselect)
-const cartObject = JSON.parse(cart)
+let userObject = JSON.parse(user)
+let menuselectObject = JSON.parse(menuselect)
+let cartObject = JSON.parse(cart)
 
-// const menuselectResult = menuselectObject === null ? undefined : {...menuselectObject, submenu: menuselectObject.submenu.split('-')[0]}
+// let menuselectResult = menuselectObject === null ? undefined : {...menuselectObject, submenu: menuselectObject.submenu.split('-')[0]}
 
-export default {user: userObject, refreshToken, token, menuselect: menuselectObject, pathAdminReload, cart : cartObject, pathUserReload}
+let local = {
+    user: userObject, refreshToken, token, menuselect: menuselectObject, pathAdminReload, cart : cartObject, pathUserReload
+}
+const resetTempLocal = () => {
+    local.user = null
+    local.refreshToken = null
+    local.token = null
+    local.menuselect = null
+    local.pathAdminReload = null
+    local.cart = null 
+    local.pathUserReload = null
+}
+export { resetTempLocal }
+
+export default local

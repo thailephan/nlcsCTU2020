@@ -67,12 +67,16 @@ class ProductDetail extends Component {
             return plt.id === plant.MACAYCANH
         })
         
-        if( plantIndex >= 0 && userCart[plantIndex].amount + amount > plant.SOCAYTON) {
-            this.setState({isErrorVisible: true, messageError: 'Tổng số cây trong giỏ không lớn hơn số cây sẳn có'})
-            setTimeout(() => 
-                this.setState({isErrorVisible: false}),
-                2000)
+        if (parseInt(plant.SOCAYTON) <= 0) {
+            alert("Cây bạn yêu cầu đã hết hàng, xin vui lòng quay lại sau")
         }
+        else
+            if( plantIndex >= 0 && userCart[plantIndex].amount + amount > plant.SOCAYTON) {
+                this.setState({isErrorVisible: true, messageError: 'Tổng số cây trong giỏ không lớn hơn số cây sẳn có'})
+                setTimeout(() => 
+                    this.setState({isErrorVisible: false}),
+                    2000)
+            } 
         else {
             try {
                 this.props.addProductToCart({id: plant.MACAYCANH, amount: amount})
@@ -173,7 +177,7 @@ class ProductDetail extends Component {
                                 Sẳn có
                             </span>
                             <span className={styles.h3}>
-                                {plant.SOCAYTON}
+                                {parseInt(plant.SOCAYTON) === 0 ? "Hết hàng" : plant.SOCAYTON}
                             </span>
                         </div>
 

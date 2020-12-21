@@ -114,14 +114,13 @@ const RouteConfig = ({user, plants, token, userCart, isAuthentication}) => {
 
         <Route path='/'>
           <Layout>
-            {isAuthentication !== false && user.MAQUYEN === 1 
+            {local.user && (user.MAQUYEN === 1 || local.user.MAQUYEN === 1)
             ? <Redirect to= {
               local.pathAdminReload !== null 
               ? local.pathAdminReload
               : '/admin'
             }/>
-            : null}
-            {local.pathUserReload !== null ? <Redirect to= {
+            : local.pathUserReload !== null ? <Redirect to= {
               local.pathUserReload !== '/logout' 
             ? local.pathUserReload 
             : '/logout'}/> : null}

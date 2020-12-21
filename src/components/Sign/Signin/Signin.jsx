@@ -36,18 +36,17 @@ class Signin extends Component {
         
             const data = await response.data
 
-            localStorage.setItem('token', data.accessToken)
-            localStorage.setItem('user', JSON.stringify(data.record))
-            localStorage.setItem('refreshToken', data.refreshToken)
-
-            await resetSidebar ()
+            resetSidebar ()
             await fetchOrdersforOneUser({idUser: data.record.MATAIKHOAN,
                 token: data.accessToken 
             })
+            
+            
             await setAuthenication({user: data.record, token: data.accessToken})
-
-            await history.push('/')
-     
+            localStorage.setItem('token', data.accessToken)
+            localStorage.setItem('user', JSON.stringify(data.record))
+            localStorage.setItem('refreshToken', data.refreshToken)
+            await history.push('/admin')
         } catch(rej) {
             console.log(rej)
             this.setState(

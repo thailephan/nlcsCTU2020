@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom'
 import { setDeAuthenication } from '../../redux/features/User/UserSlice'
 import { resetSidebar } from '../../redux/features/Sidebar/SidebarSlice'
 
+import { resetTempLocal } from '../../utils/withTokenUser'
+
 class Logout extends Component {
     
     async componentDidMount() {
@@ -13,7 +15,9 @@ class Logout extends Component {
         localStorage.removeItem('refreshToken')
         localStorage.removeItem('pathToAdminPageForAdminReload')
         localStorage.removeItem('cart')
+        localStorage.removeItem('pathToUserPage')
         
+        resetTempLocal()
         await this.props.resetSidebar()
         await this.props.setDeAuthenication()
         await this.props.history.push('/')
